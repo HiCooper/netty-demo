@@ -1,7 +1,0 @@
-server:
-  port: 19000
-  display-name: Mini-qq
-
-spring:
-  profiles:
-    active: dev
