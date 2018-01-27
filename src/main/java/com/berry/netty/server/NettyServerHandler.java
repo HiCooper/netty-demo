@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Berry_Cooper
  */
-public class SimpleChatServerHandler extends SimpleChannelInboundHandler<Object> {
+public class NettyServerHandler extends SimpleChannelInboundHandler<Object> {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

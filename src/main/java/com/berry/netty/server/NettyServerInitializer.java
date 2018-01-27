@@ -15,7 +15,7 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
  *
  * @author Berry_Cooper
  */
-public class SimpleChatServerInitializer extends
+public class NettyServerInitializer extends
         ChannelInitializer<SocketChannel> {
 
     @Override
@@ -25,7 +25,7 @@ public class SimpleChatServerInitializer extends
         pipeline.addLast("framer", new DelimiterBasedFrameDecoder(8192, buf));
         pipeline.addLast("decoder", new NettyDecoder());
         pipeline.addLast("encoder", new NettyEncoder());
-        pipeline.addLast("handler", new SimpleChatServerHandler());
+        pipeline.addLast("handler", new NettyServerHandler());
 
         System.out.println(ch.remoteAddress() + "--connected");
     }

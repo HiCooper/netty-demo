@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class SimpleChatServer {
+public class NettyServer {
 
     @Autowired
     private GlobalProperties globalProperties;
@@ -35,7 +35,7 @@ public class SimpleChatServer {
                     //设置新的Channel接收进来的连接方式-NIO
                     .channel(NioServerSocketChannel.class)
                     //配置具体的数据处理方式
-                    .childHandler(new SimpleChatServerInitializer())
+                    .childHandler(new NettyServerInitializer())
                     //设置TCP缓冲区
                     .option(ChannelOption.SO_BACKLOG, 128)
                     //设置发送数据缓冲大小

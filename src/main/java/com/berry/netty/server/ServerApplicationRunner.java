@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 public class ServerApplicationRunner implements ApplicationRunner {
 
     @Autowired
-    private SimpleChatServer simpleChatServer;
+    private NettyServer nettyServer;
 
     @Override
     public void run(ApplicationArguments var1) throws Exception {
-        simpleChatServer.run();
+        nettyServer.run();
     }
 }
