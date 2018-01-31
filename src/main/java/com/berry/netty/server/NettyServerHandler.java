@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Berry_Cooper
  */
-public class NettyServerHandler extends SimpleChannelInboundHandler<Object> {
+public class NettyServerHandler extends SimpleChannelInboundHandler<MessageNetty> {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -56,17 +56,15 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<Object> {
      * receive message from client then deal with that
      *
      * @param ctx
-     * @param msg
+     * @param messageNetty
      */
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
-        this.logger.info("messageInfo \r\nServerHandler:" + this + " \r\nChannel:" + ctx + " \r\nmessage:" + msg);
-        //1.cast msg
-        MessageNetty messageNetty = (MessageNetty) msg;
-        //2.处理业务
+    protected void messageReceived(ChannelHandlerContext ctx, MessageNetty messageNetty) throws Exception {
+        this.logger.info("messageInfo \r\nServerHandler:" + this + " \r\nChannel:" + ctx + " \r\nmessage:" + messageNetty);
+        //1.处理业务
         ProcessMessage processMessage = new ProcessMessage();
         MessageNetty responseMeg = processMessage.processMessage(messageNetty);
-        //3.返回处理后的报文
+        //2.返回处理后的报文
         Channel incoming = ctx.channel();
         incoming.writeAndFlush(JsonUtils.toJson(responseMeg));
     }

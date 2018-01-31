@@ -1,6 +1,6 @@
 server:
   port: 19000
-  display-name: Mini-qq
+  display-name: netty-demo
 
 spring:
   profiles:
